@@ -1,0 +1,36 @@
+<div class="header">
+  <ul class="nav nav-pills pull-right">
+    <li ng-class="{active: getNav('search')}"><a ng-href="/#/search">Search</a></li>
+    <li ng-class="{active: getNav('favorites')}"><a ng-href="/#/favorites">Favorites</a></li>
+  </ul>
+  <h3 class="text-muted">iTunes Search</h3>
+</div>
+<form role="form" ng:submit="doSearch()">
+  <div ng-show="getNav('search')" class="input-group">
+    <input ng-model="query" type="text" class="form-control" id="search" placeholder="Search ...">
+    <span class="input-group-btn">
+      <button class="btn btn-default" type="submit">Go!</button>
+    </span>
+  </div>
+</form>
+<table ng-show="allSongsList.results" class="table table-hover">
+  <thead>
+    <tr>
+      <th>Count : {{allSongsList.resultCount}}</th>
+      <th>Track Name</th>
+      <th>Artwork</th>
+    </tr>
+  </thead>
+  <tbody>
+        <tr ng-repeat="item in allSongsList.results">
+          <td>
+            <button ng-click="startItem(item)" type="button" ng-class="{active: item.started}" class="btn btn-default">
+              <span class="glyphicon glyphicon-star"></span> Star
+            </button>
+          </td>
+          <td>{{item.trackName}}</td>
+          <td><img ng-src="{{item.artworkUrl60}}"></td>
+        </tr>
+      </tbody>
+</table>
+
