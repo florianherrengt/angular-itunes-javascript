@@ -18,15 +18,13 @@ describe('Controller: MainCtrl', function () {
       return {resultCount: 0,results: []};
     },
     iTunesUrl = 'http://itunes.apple.com/search?callback=JSON_CALLBACK&entity=song&limit=10&media=music';
-  // load the controller's module
+
   beforeEach(module('angularjsApp'));
 
-  // Initialize the controller and a mock scope
   beforeEach(inject(function ($injector, _$httpBackend_, $controller, $rootScope, $location) {
     location = $location;
     $httpBackend = _$httpBackend_;
     mockUserResource = $injector.get('itunesAPI');
-    // $httpBackend.expectJSONP(iTunesUrl).respond(zeroItem());
     scope = $rootScope.$new();
     MainCtrl = $controller('MainCtrl', {
       $scope: scope
