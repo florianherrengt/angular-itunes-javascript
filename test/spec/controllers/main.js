@@ -40,6 +40,7 @@ describe('Controller: MainCtrl', function () {
   });
 
   it('should change location', function () {
+    // change the query to change url
     scope.query = 'a';
     scope.doSearch();
     $httpBackend.expectJSONP(iTunesUrl).respond(zeroItem());
